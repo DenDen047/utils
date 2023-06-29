@@ -87,7 +87,27 @@ from PIL import Image
 import numpy as np
 import os
 import glob
-def display_pic(folder):
+def display_img(file):
+    fig = plt.figure(figsize=(30, 60))
+    img = Image.open(file)    
+    images = np.asarray(img)
+    ax = fig.add_subplot(1, 1, 1)
+    image_plt = np.array(images)
+    ax.imshow(image_plt)
+    name = os.path.basename(file)
+    ax.set_xlabel(name, fontsize=30)  
+    fig.tight_layout()
+    plt.show()
+    plt.close()
+
+
+# --- display_imgs ---
+import matplotlib.pyplot as plt
+from PIL import Image
+import numpy as np
+import os
+import glob
+def display_imgs(folder):
     fig = plt.figure(figsize=(30, 60))
     files = sorted(glob.glob(folder+'/*.jpg'))
     for i, file in enumerate(files):
